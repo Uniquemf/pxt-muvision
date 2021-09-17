@@ -11,27 +11,14 @@
 #include "pxt.h"
 
 #if MICROBIT_CODAL
-class MuUart {
- public:
-  typedef NRF52Serial* hw_port_t;
-
-  MuUart(hw_port_t hw_port);
-  virtual ~MuUart();
-  MuUart(const MuUart&) = delete;
-  MuUart& operator=(const MuUart &) = delete;
-
-  virtual size_t available(void);
-  virtual size_t read(uint8_t* buf, size_t length);
-  virtual size_t write(uint8_t* buf, size_t length);
-
- private:
- protected:
-  hw_port_t hw_port_;
-};
+#define NRF52Serial* uBitSerial
 #else
+#define MicroBitSerial* uBitSerial
+#endif
+
 class MuUart {
  public:
-  typedef MicroBitSerial* hw_port_t;
+  typedef uBitSerial hw_port_t;
 
   MuUart(hw_port_t hw_port);
   virtual ~MuUart();
