@@ -11,9 +11,9 @@
 #include "pxt.h"
 
 #if MICROBIT_CODAL
-#define NRF52Serial* uBitSerial
+#define  uBitSerial NRF52Serial*
 #else
-#define MicroBitSerial* uBitSerial
+#define  uBitSerial MicroBitSerial*
 #endif
 
 class MuUart {
